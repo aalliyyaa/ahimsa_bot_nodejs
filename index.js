@@ -1,11 +1,11 @@
 const TelegramBot = require('node-telegram-bot-api');
-require('dotenv').config();
+// require('dotenv').config();
 const schedule = require('node-schedule');
 
 
 // Ваш код продолжается здесь
 
-const token = process.env.telegram_token
+const token = "6157529765:AAGtHJ16hFo5CgLX79WRvBs3CkvFddD-gpg"
 // Create a bot that uses 'polling' to fetch new updates
 const bot = new TelegramBot(token, {polling: true});
 
