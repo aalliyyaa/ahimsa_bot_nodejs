@@ -69,22 +69,15 @@ function sendRandomMessageWithButtons(chatId) {
   }
 
 
-// Определите задание планировщика вне обработчика команды /start
-const job = schedule.scheduleJob('0 9 * * *', () => {
-  // Получите список всех активных чатов бота
-  const chatIds = Object.keys(bot._polling._chatIdPromiseMap);
 
-  // Отправьте случайное сообщение с кнопками для каждого активного чата
-  chatIds.forEach((chatId) => {
-    sendRandomMessageWithButtons(chatId);
-  });
-});
   // Регулярная отправка случайных сообщений каждое утро в 9 часов
 
   bot.onText(/\/start/, (msg) => {
   const chatId = msg.chat.id;
   bot.sendMessage(chatId, 'Привет, love! Тебя привествует Ahimsa. Будем вместе потеть');
-  sendRandomMessageWithButtons(chatId);
+  const job = schedule.scheduleJob('0 9 * * *', () => {
+        sendRandomMessageWithButtons(chatId);
+      });
 });
 
   
