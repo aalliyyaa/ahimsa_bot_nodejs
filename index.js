@@ -73,12 +73,12 @@ function sendRandomMessageWithButtons(chatId) {
   // Регулярная отправка случайных сообщений каждое утро в 9 часов
 
   bot.onText(/\/start/, (msg) => {
-  const chatId = msg.chat.id;
-  bot.sendMessage(chatId, 'Привет, love! Тебя привествует Ahimsa. Будем вместе потеть');
-  const job = schedule.scheduleJob('* /1 * * * *', () => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, 'Привет, love! Тебя привествует Ahimsa. Будем вместе потеть. Я буду ждать тебя каждый день после 9');
+    const job = schedule.scheduleJob('*/1 * * * *', () => {
         sendRandomMessageWithButtons(chatId);
       });
-});
+  });
 
   
 
